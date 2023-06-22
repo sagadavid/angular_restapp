@@ -10,9 +10,9 @@ export class InMemoryDataService implements InMemoryDbService {
     const users = [
       {
         id: 11,
-        first_name: 'Eve',
-        last_name: 'Holt',
-        avatar: 'assets/img/user.jpg',
+        first_name: 'David',
+        last_name: 'Saga',
+        avatar: 'assets/img/user0.jpg',
       },
       {
         id: 12,
