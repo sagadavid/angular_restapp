@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ReqresService } from '../../services/reqres.service';
 import { User } from 'src/app/user';
 import { catchError } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,11 @@ import { catchError } from 'rxjs';
 export class HomeComponent {
   users: User[] = [];
 
-  constructor(private reqresService: ReqresService) {
+  constructor(
+    private reqresService: ReqresService,
+    //help to navigate to a new page, from home
+    private router: Router
+  ) {
     this.getUsers();
   }
 
@@ -28,6 +33,8 @@ export class HomeComponent {
   }
 
   userDetails(id: number) {
-    console.log('User id: ', id);
+    //console.log('User id: ', id);
+    //navigate to where user by id
+    this.router.navigate(['user', id]);
   }
 }
