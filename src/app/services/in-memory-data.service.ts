@@ -12,7 +12,7 @@ export class InMemoryDataService implements InMemoryDbService {
         id: 11,
         first_name: 'David',
         last_name: 'Saga',
-        avatar: 'assets/img/user0.jpg',
+        avatar: 'assets/img/user.jpg',
       },
       {
         id: 12,
