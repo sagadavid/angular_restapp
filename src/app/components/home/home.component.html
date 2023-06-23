@@ -1,1 +1,7 @@
 <p>home works!</p>
+<h1>List of users</h1>
+<ul>
+  <li *ngFor="let user of users">
+    <h3>{{ user.first_name }} {{ user.last_name }}</h3>
+  </li>
+</ul>
