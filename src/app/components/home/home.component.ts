@@ -34,7 +34,7 @@ export class HomeComponent {
 
   userDetails(id: number) {
     //console.log('User id: ', id);
-    //navigate to where user by id
+    //navigate to user by id
     this.router.navigate(['user', id]);
   }
 }
