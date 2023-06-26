@@ -93,9 +93,16 @@ ng g c components/user/user-detail --flat
 npm install bootstrap@latest --save
 npm install jquery@latest --save
 npm install popper.js@latest --save
-
+angular.json--> styles:[], scripts:[],
+20
 **stop server -->
     ctrl+c,
     ps -ef | grep "ng serve"
     kill 6176
-
+ng serve
+21
+app.module.ts--> import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+22
+contact.component.ts--> 
+    import { Component, OnInit } from '@angular/core';
+    import { FormBuilder, FormGroup, Validators } from '@angular/forms';

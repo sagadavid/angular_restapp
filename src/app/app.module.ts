@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserDetailComponent } from './components/user/user-detail.component';
 import { RouterModule, Routes } from '@angular/router';
 import { AppRoutingModule } from './app.routes';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,8 @@ import { AppRoutingModule } from './app.routes';
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
       dataEncapsulation: false,
     }),
+    ReactiveFormsModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
