@@ -1,0 +1,91 @@
+
+1
+ng new rest
+ng serve -o
+    http://localhost:4200
+2
+jquery-popper-bootsrap --> 
+    </head> (getbootstrap.com/cdn)
+3
+ng g c components/navbar -->
+    app.component.xhtml/<app-navbar> </app-navbar>
+app.module.ts/declerations-imports
+4
+ng-router-appmodule-->
+    const routes: Routes
+    @NgModule({ imports: [RouterModule.forRoot(routes)], exports: [RouterModule] })  
+    export class AppRoutingModule {}
+5
+app.module.ts/imports: [BrowserModule, AppRoutingModule ],
+6
+navbar.component.xhtml-->
+    <li class="nav-item" routerLinkActive="active">
+    <a class="nav-link" [routerLink]="['/home']">Home <span class="sr-only">(current)</span></a> </li>
+app.component.xhtml-->
+    <router-outlet></router-outlet>
+7
+ng g s services/reqres-->
+    reqres.service.ts/@Injectable({ providedIn: 'root' })
+    app.module.ts/imports: [
+        BrowserModule, 
+        AppRoutingModule, 
+        HttpClientModule],
+8
+app/user.ts/export interface User { id: number;...}
+9/1
+npm install angular-in-memory-web-api@0.16.0 --save
+    npm install --force
+    app.module.ts-->
+        import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api'; 
+        import { InMemoryDataService } from './services/in-memory-data.service';
+        imports: [  BrowserModule, 
+                    AppRoutingModule, 
+                    HttpClientModule, 
+                    HttpClientInMemoryWebApiModule.forRoot( 
+                        InMemoryDataService, { dataEncapsulation: false } ) ]
+9/2
+ng g s services/InMemoryData-->
+    import { Injectable } from '@angular/core'; 
+    import { InMemoryDbService } from 'angular-in-memory-web-api'; 
+    import { User } from '../user';
+    @Injectable({ providedIn: 'root', }) export class InMemoryDataService 
+    implements InMemoryDbService { createDb() 
+        { const users = [ { id: 11, first_name: 'Eve', last_name: 'Holt', avatar: 'assets/img/user.jpg' },...]; 
+        return {users};
+        genId(users: User[]): number { return users.length > 0 ? Math.max(...users.map(user => user.id)) + 1 : 11; }}}
+    
+    ....
+10
+create image folder
+11
+reqresService.ts--> 
+    import { HttpClient } from '@angular/common/http';
+    private url = 'api/users';
+    import { Observable } from 'rxjs'; 
+    import { User } from '../user';
+    getUsers(): Observable<User[]> { return this.http.get<User[]>(this.url); }
+12
+home.component.ts-->
+    getUsers() {this.reqresService.getUsers().subscribe( (res: User[]) => { console.log(res); }, (err) => { console.error(err); } );}
+    constructor( private reqresService: ReqresService ) { this.getUsers(); }
+13
+home.component.ts-->
+    users: User[] = [];
+    getUsers() {this.reqresService.getUsers().subscribe( (res: User[]) => { this.users = res; }, (err) => { console.error(err); } );}
+14
+home.component.html-->
+   <ul><li *ngFor="let user of users"><h1>{{ user.first_name}} {{ user.last_name }}</h1> </li> </ul>
+   <ul><li *ngFor="let user of users"><img [src]="user.avatar">
+    <p>{{ user.first_name }} {{ user.last_name }}</p> </li> </ul>
+15
+home.component.html-->
+    <button class="btn btn-outline-primary"(click)="userDetails(user.id)"> Details </button>
+16
+home.component.ts-->
+    userDetails( id: number ) {console.log( 'User id: ', id ); }
+17
+reqresService.ts-->
+    getUser( id: number ): Observable<User> {const url = `${this.url}/${id}`;return this.http.get<User>(url);}
+18
+ng g c components/user/user-detail --flat
+........
