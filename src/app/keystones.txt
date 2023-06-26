@@ -89,3 +89,13 @@ reqresService.ts-->
 18
 ng g c components/user/user-detail --flat
 ........
+19
+npm install bootstrap@latest --save
+npm install jquery@latest --save
+npm install popper.js@latest --save
+
+**stop server -->
+    ctrl+c,
+    ps -ef | grep "ng serve"
+    kill 6176
+
