@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { User } from '../user';
+import { catchError, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +16,9 @@ export class ReqresService {
 
   //list of users
   getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.url);
+    return this.http
+      .get<User[]>(this.url)
+      .pipe(catchError(this.handleError<User[]>('getUsers', [])));
   }
 
   //url by id
@@ -23,5 +26,12 @@ export class ReqresService {
     const url = `${this.url}/${id}`;
 
     return this.http.get<User>(url);
+  }
+
+  private handleError<T>(operation = 'operation', result?: T): any {
+    return (error: any): Observable<T> => {
+      console.error(error);
+      return of(result as T);
+    };
   }
 }
