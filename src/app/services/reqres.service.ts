@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of } from 'rxjs'; //usage below observable.of
 import { User } from '../user';
 import { catchError, map } from 'rxjs';
 
@@ -10,6 +10,9 @@ import { catchError, map } from 'rxjs';
 export class ReqresService {
   //base of out endpoints
   private url = 'api/users';
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+  };
 
   //we need http client to carry out requests
   constructor(private http: HttpClient) {}
@@ -33,7 +36,12 @@ export class ReqresService {
   private handleError<T>(operation = 'operation', result?: T): any {
     return (error: any): Observable<T> => {
       console.error(error);
-      return of(result as T);
+      return of(result as T); //Observable.of() is useful for maintaining the Observable data type before implementing an asynchronous interaction (for example, an http request to an API).
     };
+  }
+  updateUser(user: User): any {
+    return this.http
+      .put(this.url, user, this.httpOptions)
+      .pipe(catchError(this.handleError<User>('updateUser')));
   }
 }
