@@ -25,7 +25,7 @@
 
       <div
         *ngIf="submitted && messageForm.controls['message'].errors"
-        class="errors"
+        class="error"
       >
         <div *ngIf="messageForm.controls['message'].errors['required']">
           a message is required
