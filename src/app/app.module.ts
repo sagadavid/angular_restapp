@@ -13,6 +13,7 @@ import { UserDetailComponent } from './components/user/user-detail.component';
 import { RouterModule, Routes } from '@angular/router';
 import { AppRoutingModule } from './app.routes';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { UserAddComponent } from './components/user/user-add.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     ContactComponent,
     HomeComponent,
     UserDetailComponent,
+    UserAddComponent,
   ],
   imports: [
     BrowserModule,

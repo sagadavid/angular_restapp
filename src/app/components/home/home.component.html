@@ -1,5 +1,16 @@
 <p>home works!</p>
 <h1>List of users</h1>
+<div
+  class="btn-toolbar"
+  role="toolbar"
+  style="padding-top: 5px; padding-bottom: 10px"
+>
+  <div class="btn-group">
+    <button class="btn btn-success" (click)="addUser()">
+      add new user/legg til ny bruker
+    </button>
+  </div>
+</div>
 <ul>
   <li *ngFor="let user of users">
     <img [src]="user.avatar" />
@@ -9,7 +20,7 @@
         class="btn btn-outline-primary btn-sm"
         (click)="userDetails(user.id)"
       >
-        Details
+        Details/Detaljer
       </button>
     </div>
   </li>

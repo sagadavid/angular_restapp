@@ -44,4 +44,10 @@ export class ReqresService {
       .put(this.url, user, this.httpOptions)
       .pipe(catchError(this.handleError<User>('updateUser')));
   }
+
+  addUser(user: User): Observable<User> {
+    return this.http
+      .post<User>(this.url, user, this.httpOptions)
+      .pipe(catchError(this.handleError<User>('addUser')));
+  }
 }

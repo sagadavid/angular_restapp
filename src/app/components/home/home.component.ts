@@ -37,4 +37,7 @@ export class HomeComponent {
     //navigate to user by id
     this.router.navigate(['user', id]);
   }
+  addUser(): void {
+    this.router.navigate(['add']);
+  }
 }
