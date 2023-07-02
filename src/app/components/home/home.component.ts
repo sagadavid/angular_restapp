@@ -40,4 +40,9 @@ export class HomeComponent {
   addUser(): void {
     this.router.navigate(['add']);
   }
+
+  deleteUser(user: any) {
+    this.users = this.users.filter((u) => u !== user);
+    this.reqresService.deleteUser(user).subscribe();
+  }
 }

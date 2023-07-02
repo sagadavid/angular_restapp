@@ -50,4 +50,11 @@ export class ReqresService {
       .post<User>(this.url, user, this.httpOptions)
       .pipe(catchError(this.handleError<User>('addUser')));
   }
+
+  deleteUser(user: User): Observable<User> {
+    const url = `${this.url}/${user.id}`;
+    return this.http
+      .delete<User>(url, this.httpOptions)
+      .pipe(catchError(this.handleError<User>('deleteUser id=${user.id}')));
+  }
 }
