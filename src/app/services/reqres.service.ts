@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs'; //usage below observable.of
 import { User } from '../user';
-import { catchError, map } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +17,7 @@ export class ReqresService {
   //we need http client to carry out requests
   constructor(private http: HttpClient) {}
 
-  //list of users
+  //list of
   getUsers(): Observable<User[]> {
     return this.http
       .get<User[]>(this.url)
