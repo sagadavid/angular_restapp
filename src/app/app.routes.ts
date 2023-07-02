@@ -11,8 +11,8 @@ export const ROUTES: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'user/:id', component: UserDetailComponent },
-  { path: '**', component: HomeComponent },
   { path: 'add', component: UserAddComponent },
+  { path: '**', component: HomeComponent }, //this should locate at the end, else, for loop picks ** instead of any other route
 ];
 
 @NgModule({

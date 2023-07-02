@@ -10,7 +10,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { HomeComponent } from './components/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserDetailComponent } from './components/user/user-detail.component';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, Router, ROUTES } from '@angular/router';
 import { AppRoutingModule } from './app.routes';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { UserAddComponent } from './components/user/user-add.component';
