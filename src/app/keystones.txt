@@ -107,5 +107,7 @@ contact.component.ts-->
     import { Component, OnInit } from '@angular/core';
     import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 ...
-99 loading screen
+100 loading screen
 npm install --save-dev @fortawesome/fontawesome-free
+101 pipes
+ng g p pipes/noimage
