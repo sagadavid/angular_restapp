@@ -14,6 +14,7 @@ import { RouterModule, Routes, Router, ROUTES } from '@angular/router';
 import { AppRoutingModule } from './app.routes';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { UserAddComponent } from './components/user/user-add.component';
+import { LoadingComponent } from './components/shared/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { UserAddComponent } from './components/user/user-add.component';
     HomeComponent,
     UserDetailComponent,
     UserAddComponent,
+    LoadingComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,6 +33,7 @@ import { UserAddComponent } from './components/user/user-add.component';
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
       dataEncapsulation: false,
+      delay: 1500,
     }),
     ReactiveFormsModule,
     FormsModule,

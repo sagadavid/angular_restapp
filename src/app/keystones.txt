@@ -4,7 +4,7 @@ ng new rest
 ng serve -o
     http://localhost:4200
 2
-jquery-popper-bootsrap --> 
+jquery-popper-bootsrap -->
     </head> (getbootstrap.com/cdn)
 3
 ng g c components/navbar -->
@@ -13,7 +13,7 @@ app.module.ts/declerations-imports
 4
 ng-router-appmodule-->
     const routes: Routes
-    @NgModule({ imports: [RouterModule.forRoot(routes)], exports: [RouterModule] })  
+    @NgModule({ imports: [RouterModule.forRoot(routes)], exports: [RouterModule] })
     export class AppRoutingModule {}
 5
 app.module.ts/imports: [BrowserModule, AppRoutingModule ],
@@ -27,8 +27,8 @@ app.component.xhtml-->
 ng g s services/reqres-->
     reqres.service.ts/@Injectable({ providedIn: 'root' })
     app.module.ts/imports: [
-        BrowserModule, 
-        AppRoutingModule, 
+        BrowserModule,
+        AppRoutingModule,
         HttpClientModule],
 8
 app/user.ts/export interface User { id: number;...}
@@ -36,32 +36,32 @@ app/user.ts/export interface User { id: number;...}
 npm install angular-in-memory-web-api@0.16.0 --save
     npm install --force
     app.module.ts-->
-        import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api'; 
+        import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
         import { InMemoryDataService } from './services/in-memory-data.service';
-        imports: [  BrowserModule, 
-                    AppRoutingModule, 
-                    HttpClientModule, 
-                    HttpClientInMemoryWebApiModule.forRoot( 
+        imports: [  BrowserModule,
+                    AppRoutingModule,
+                    HttpClientModule,
+                    HttpClientInMemoryWebApiModule.forRoot(
                         InMemoryDataService, { dataEncapsulation: false } ) ]
 9/2
 ng g s services/InMemoryData-->
-    import { Injectable } from '@angular/core'; 
-    import { InMemoryDbService } from 'angular-in-memory-web-api'; 
+    import { Injectable } from '@angular/core';
+    import { InMemoryDbService } from 'angular-in-memory-web-api';
     import { User } from '../user';
-    @Injectable({ providedIn: 'root', }) export class InMemoryDataService 
-    implements InMemoryDbService { createDb() 
-        { const users = [ { id: 11, first_name: 'Eve', last_name: 'Holt', avatar: 'assets/img/user.jpg' },...]; 
+    @Injectable({ providedIn: 'root', }) export class InMemoryDataService
+    implements InMemoryDbService { createDb()
+        { const users = [ { id: 11, first_name: 'Eve', last_name: 'Holt', avatar: 'assets/img/user.jpg' },...];
         return {users};
         genId(users: User[]): number { return users.length > 0 ? Math.max(...users.map(user => user.id)) + 1 : 11; }}}
-    
+
     ....
 10
 create image folder
 11
-reqresService.ts--> 
+reqresService.ts-->
     import { HttpClient } from '@angular/common/http';
     private url = 'api/users';
-    import { Observable } from 'rxjs'; 
+    import { Observable } from 'rxjs';
     import { User } from '../user';
     getUsers(): Observable<User[]> { return this.http.get<User[]>(this.url); }
 12
@@ -103,6 +103,9 @@ ng serve
 21
 app.module.ts--> import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 22
-contact.component.ts--> 
+contact.component.ts-->
     import { Component, OnInit } from '@angular/core';
     import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+...
+99 loading screen
+npm install --save-dev @fortawesome/fontawesome-free
